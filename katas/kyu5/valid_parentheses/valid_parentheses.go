@@ -22,6 +22,9 @@ func (s *Stack) pop() rune {
 
 	n := len(s.stack) - 1
 	defer func() {
+		// If the stack is permanent and the elements temporary,
+		// you may want to remove the top element before popping the stack to avoid memory leaks.
+		s.stack[n] = NotFound // Erase element (write zero value)
 		s.stack = s.stack[:n]
 	}()
 	return s.stack[n]

@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+const NotFound = '\x00'
+
 // A basic stack (LIFO) data structure
 type Stack struct {
 	stack []rune
@@ -15,7 +17,7 @@ func (s *Stack) push(c rune) {
 
 func (s *Stack) pop() rune {
 	if len(s.stack) == 0 {
-		return '\x00'
+		return NotFound
 	}
 
 	n := len(s.stack) - 1
@@ -27,7 +29,7 @@ func (s *Stack) pop() rune {
 
 func (s Stack) top() rune {
 	if len(s.stack) == 0 {
-		return '\x00'
+		return NotFound
 	}
 	n := len(s.stack) - 1
 	return s.stack[n]
